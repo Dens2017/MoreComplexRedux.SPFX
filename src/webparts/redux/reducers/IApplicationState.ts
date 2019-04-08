@@ -5,7 +5,7 @@ export interface IApplicationState {
 }
 
 export const initialState: IApplicationState = {
-  checkers: 10,
+  checkers: 0,
   chess: 0,
   fish: 0
 };
