@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.7.1",
+    "libraryName": "redux-03-spfx",
+    "libraryId": "48ec26e2-462c-4909-ba13-b8b29ee43362",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

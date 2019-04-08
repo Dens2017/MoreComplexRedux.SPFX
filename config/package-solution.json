@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "redux-03-spfx-client-side-solution",
+    "id": "48ec26e2-462c-4909-ba13-b8b29ee43362",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/redux-03-spfx.sppkg"
+  }
+}
