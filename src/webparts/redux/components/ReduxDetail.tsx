@@ -4,6 +4,8 @@ import { IReduxDetailProps } from './IReduxProps';
 import { IApplicationState } from '../reducers/IApplicationState';
 import {IVoteDetails} from '../actions/IAction';
 
+import {voteFish} from '../actions';
+
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -69,12 +71,23 @@ export default class ReduxDetail extends React.Component<IReduxDetailProps, {}> 
     super(props);
   }
 
-  public render(): React.ReactElement<IReduxDetailProps> {
-    this.props.store.subscribe(this.render);
-    const appState: IApplicationState = this.props.store.getState();
+  public componentDidMount() {
+    this.props.store.subscribe(this.getData);
+  }
 
+private getData() {
+   return '#'+Math.floor(Math.random()*16777215).toString(16);
+  
+}
+
+  public render(): React.ReactElement<IReduxDetailProps> {
+    // this.props.store.subscribe(this.render);
+    const appState: IApplicationState = this.props.store.getState();
+    const bg = {
+      backgroundColor: this.getData()
+    };
     return (
-      <div className={styles.container}>
+      <div className={styles.container} style={bg}>
         <div className={styles.row}>
           <div className={styles.column}>
             {(appState.openDetails) &&
@@ -113,5 +126,11 @@ export default class ReduxDetail extends React.Component<IReduxDetailProps, {}> 
   @autobind
   private hideDetails(): void {
     this.props.store.dispatch(closeDetails());
+  }
+
+  private saveItem(item) {
+    //.. pnp
+    this.props.store.dispatch(item);
+    
   }
 }

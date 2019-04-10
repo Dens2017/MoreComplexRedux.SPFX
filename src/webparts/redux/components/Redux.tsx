@@ -16,7 +16,7 @@ import {
   openDetails,
   closeDetails
 } from '../actions';
-import {gameTypes, actionTypes} from '../actions/IAction';
+import { gameTypes, actionTypes } from '../actions/IAction';
 import { IApplicationState } from '../reducers/IApplicationState';
 import ReduxDetail from './ReduxDetail';
 import ReduxDetail1 from './ReduxDetail1';
@@ -26,8 +26,12 @@ export default class Redux extends React.Component<IReduxProps, {}> {
     super(props);
   }
 
+  public componentDidMount() {
+
+  }
+
   public render(): React.ReactElement<IReduxProps> {
-    this.props.store.subscribe(this.render);
+    // this.props.store.subscribe(this.render)
     const appState: IApplicationState = this.props.store.getState();
     const percentCompleteCheckers: number = appState.checkers / 100;
     const percentCompleteChess: number = appState.chess / 100;
@@ -71,7 +75,7 @@ export default class Redux extends React.Component<IReduxProps, {}> {
                 />
                 <DefaultButton
                   disabled={false}
-                  text={(appState.checkersOpen) ? "Hide Details": "Show Details"}
+                  text={(appState.checkersOpen) ? "Hide Details" : "Show Details"}
                   onClick={this.showDetailCheckers}
                 />
               </div>
@@ -83,7 +87,7 @@ export default class Redux extends React.Component<IReduxProps, {}> {
                 />
                 <DefaultButton
                   disabled={false}
-                  text={(appState.chessOpen) ? "Hide Details": "Show Details"}
+                  text={(appState.chessOpen) ? "Hide Details" : "Show Details"}
                   onClick={this.showDetailChess}
                 />
               </div>
@@ -95,12 +99,12 @@ export default class Redux extends React.Component<IReduxProps, {}> {
                 />
                 <DefaultButton
                   disabled={false}
-                  text={(appState.fishOpen) ? "Hide Details": "Show Details"}
+                  text={(appState.fishOpen) ? "Hide Details" : "Show Details"}
                   onClick={this.showDetailFish}
                 />
               </div>
             </div>
-          </div>          
+          </div>
         </div>
         <ReduxDetail store={this.props.store}></ReduxDetail>
       </div>
