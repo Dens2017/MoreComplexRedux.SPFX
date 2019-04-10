@@ -1,47 +1,38 @@
 import * as React from 'react';
 import styles from './Redux.module.scss';
-import { IReduxProps, IReduxState } from './IReduxProps';
+import { IReduxProps } from './IReduxProps';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { Store } from 'redux';
 import {
   DefaultButton,
   ProgressIndicator,
+  ChoiceGroup,
+  IChoiceGroupOption,
   autobind
 } from 'office-ui-fabric-react';
 import {
-  voteChess, 
-  voteCheckers, 
-  voteFish
+  voteChess,
+  voteCheckers,
+  voteFish,
+  openDetails,
+  closeDetails
 } from '../actions';
+import {gameTypes, actionTypes} from '../actions/IAction';
 import { IApplicationState } from '../reducers/IApplicationState';
+import ReduxDetail from './ReduxDetail';
+import ReduxDetail1 from './ReduxDetail1';
 
-export default class Redux extends React.Component<IReduxProps, IReduxState> {
+export default class Redux extends React.Component<IReduxProps, {}> {
 
   constructor(props: IReduxProps) {
     super(props);
-    this.state = {
-      checkers: 0,
-      chess: 0,
-      fish: 0
-    };
-  }
-
-  public async componentDidMount() {
-    // const appState: Store = this.props.store;
-    // const appStateData: IApplicationState = appState.getState();
-    // this.setState({ 
-    //   checkers: appStateData.checkers,
-    //   chess: appStateData.chess,
-    //   fish: appStateData.fish
-    //  });
   }
 
   public render(): React.ReactElement<IReduxProps> {
     this.props.store.subscribe(this.render);
     const appState: IApplicationState = this.props.store.getState();
-    const percentCompleteCheckers: number = appState.checkers/100;
-    const percentCompleteChess: number = appState.chess/100;
-    const percentCompleteFish: number = appState.fish/100;
+    const percentCompleteCheckers: number = appState.checkers / 100;
+    const percentCompleteChess: number = appState.chess / 100;
+    const percentCompleteFish: number = appState.fish / 100;
     return (
       <div className={styles.redux}>
         <div className={styles.container}>
@@ -79,6 +70,12 @@ export default class Redux extends React.Component<IReduxProps, IReduxState> {
                   description={"Count (" + appState.checkers + ")"}
                   percentComplete={percentCompleteCheckers}
                 />
+                <DefaultButton
+                  disabled={false}
+                  text="Show Details"
+                  onClick={this.showDetailCheckers}
+                  // className={styles.buttonFormats}
+                />
               </div>
               <div>
                 <ProgressIndicator
@@ -94,9 +91,17 @@ export default class Redux extends React.Component<IReduxProps, IReduxState> {
                   percentComplete={percentCompleteFish}
                 />
               </div>
+              <div>
+                <ProgressIndicator
+                  label="Go Fish"
+                  description={"Count (" + appState.fish + ")"}
+                  percentComplete={percentCompleteFish}
+                />
+              </div>
             </div>
-          </div>
+          </div>          
         </div>
+        <ReduxDetail store={this.props.store}></ReduxDetail>
       </div>
     );
   }
@@ -114,5 +119,10 @@ export default class Redux extends React.Component<IReduxProps, IReduxState> {
   @autobind
   private clickedGoFish() {
     this.props.store.dispatch(voteFish());
+  }
+
+  @autobind
+  private showDetailCheckers(): void {
+    this.props.store.dispatch(openDetails(gameTypes.checkers));
   }
 }

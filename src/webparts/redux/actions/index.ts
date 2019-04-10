@@ -1,7 +1,8 @@
 import {
   IAction,
   actionTypes,
-  gameTypes
+  gameTypes,
+  IVoteDetails
 } from './IAction';
 
 export const voteCheckers = (): IAction => {
@@ -25,11 +26,25 @@ export const voteFish = (): IAction => {
   };
 };
 
-export const getFish = (): IAction => {
+export const openDetails = (choiceToOpen: number): IAction => {
+  const voteDetailsValue: IVoteDetails[] = [];
   return {
-    type: actionTypes.getVote,
+    type: actionTypes.openDetails,
     data: { 
-      gameType: gameTypes.fish
+      openDetails: true,
+      choiceToOpen: choiceToOpen,
+      voteDetails: voteDetailsValue,
+     }
+  };
+};
+
+export const closeDetails = (): IAction => {
+  return {
+    type: actionTypes.closeDetails,
+    data: { 
+      openDetails: false,
+      choiceToOpen: 0,
+      voteDetails: [],
      }
   };
 };

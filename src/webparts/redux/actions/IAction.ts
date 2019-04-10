@@ -1,16 +1,26 @@
 export enum actionTypes {
   vote,
-  getVote
+  openDetails,
+  closeDetails
 }
 
 export enum gameTypes {
   checkers,
   chess,
-  fish
+  fish,
+}
+
+export interface IVoteDetails {
+  order: number;
+  voter: string;
+  votetime: string;
 }
 
 export interface IVoteData {
-  gameType: gameTypes;
+  gameType?: gameTypes;
+  openDetails?: boolean;
+  choiceToOpen?: number;
+  voteDetails?: IVoteDetails[];
 }
 
 export interface IAction {
