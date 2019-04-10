@@ -51,21 +51,32 @@ const voteAction: Reducer<IApplicationState> = (state: IApplicationState = initi
       return newState;
 
     case actionTypes.openDetails:
-      console.log("Choice to Opem", action.data.choiceToOpen);
       if (action.data.choiceToOpen === gameTypes.checkers) {
         newState.openDetails = true;
         newState.voteDetails = newState.checkersDetails;
+        newState.checkersOpen = true;
       }
       if (action.data.choiceToOpen === gameTypes.chess) {
         newState.openDetails = true;
         newState.voteDetails = newState.chessDetails;
+        newState.chessOpen = true;
       }
       if (action.data.choiceToOpen === gameTypes.fish) {
         newState.openDetails = true;
         newState.voteDetails = newState.fishDetails;
+        newState.fishOpen = true;
       }
-      console.log("Choice to Opem result", newState);
       return newState;
+  
+    case actionTypes.closeDetails:
+      newState.checkersOpen = false;
+      newState.chessOpen = false;
+      newState.fishOpen = false;
+      newState.voteDetails = [];
+      newState.openDetails = false;
+
+      return newState;
+
     default:
       return state;
   }

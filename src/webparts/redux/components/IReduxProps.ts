@@ -10,7 +10,5 @@ export interface IReduxProps {
 }
 
 export interface IReduxDetailProps {
-  openDetails?: boolean;
-  voteDetails?: IVoteDetails[];
   store?: Store<IApplicationState>;
 }

@@ -9,8 +9,14 @@ import {
   DetailsListLayoutMode,
   Selection,
   SelectionMode,
-  IColumn
+  IColumn,
+  DefaultButton,
+  autobind
 } from 'office-ui-fabric-react';
+
+import {
+  closeDetails
+} from '../actions';
 
 import ReduxDetail1 from './ReduxDetail1';
 
@@ -80,17 +86,32 @@ export default class ReduxDetail extends React.Component<IReduxDetailProps, {}> 
                 setKey="set"
                 layoutMode={DetailsListLayoutMode.justified}
                 isHeaderVisible={true}
-                // selection={this._selection}
                 selectionPreservedOnEmptyClick={true}
-                // onItemInvoked={this._onItemInvoked}
                 enterModalSelectionOnTouch={true}
                 ariaLabelForSelectionColumn="Toggle selection"
                 ariaLabelForSelectAllCheckbox="Toggle selection for all items"
               />
             }
           </div>
+          <div className={styles.column}>
+            {(appState.openDetails) &&
+              <DefaultButton
+                primary
+                // data-automation-id="test"
+                disabled={false}
+                text="Hide Details"
+                onClick={this.hideDetails}
+                className={styles.buttonFormats}
+              />
+            }
+          </div>
         </div>
       </div>
     );
+  }
+
+  @autobind
+  private hideDetails(): void {
+    this.props.store.dispatch(closeDetails());
   }
 }

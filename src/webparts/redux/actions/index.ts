@@ -34,6 +34,7 @@ export const openDetails = (choiceToOpen: number): IAction => {
       openDetails: true,
       choiceToOpen: choiceToOpen,
       voteDetails: voteDetailsValue,
+      
      }
   };
 };
@@ -43,7 +44,6 @@ export const closeDetails = (): IAction => {
     type: actionTypes.closeDetails,
     data: { 
       openDetails: false,
-      choiceToOpen: 0,
       voteDetails: [],
      }
   };

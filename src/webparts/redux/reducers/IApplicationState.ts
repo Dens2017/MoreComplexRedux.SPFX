@@ -8,6 +8,9 @@ export interface IApplicationState {
   checkersDetails?: IVoteDetails[];
   chessDetails?: IVoteDetails[];
   fishDetails?: IVoteDetails[];
+  checkersOpen?: boolean;
+  chessOpen?: boolean;
+  fishOpen?: boolean;
 }
 
 export const initialState: IApplicationState = {
@@ -19,4 +22,7 @@ export const initialState: IApplicationState = {
   checkersDetails: [],
   chessDetails: [],
   fishDetails: [],
+  checkersOpen: false,
+  chessOpen: false,
+  fishOpen: false,
 };

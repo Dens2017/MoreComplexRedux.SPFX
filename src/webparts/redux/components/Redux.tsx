@@ -22,7 +22,6 @@ import ReduxDetail from './ReduxDetail';
 import ReduxDetail1 from './ReduxDetail1';
 
 export default class Redux extends React.Component<IReduxProps, {}> {
-
   constructor(props: IReduxProps) {
     super(props);
   }
@@ -72,9 +71,8 @@ export default class Redux extends React.Component<IReduxProps, {}> {
                 />
                 <DefaultButton
                   disabled={false}
-                  text="Show Details"
+                  text={(appState.checkersOpen) ? "Hide Details": "Show Details"}
                   onClick={this.showDetailCheckers}
-                  // className={styles.buttonFormats}
                 />
               </div>
               <div>
@@ -83,12 +81,10 @@ export default class Redux extends React.Component<IReduxProps, {}> {
                   description={"Count (" + appState.chess + ")"}
                   percentComplete={percentCompleteChess}
                 />
-              </div>
-              <div>
-                <ProgressIndicator
-                  label="Go Fish"
-                  description={"Count (" + appState.fish + ")"}
-                  percentComplete={percentCompleteFish}
+                <DefaultButton
+                  disabled={false}
+                  text={(appState.chessOpen) ? "Hide Details": "Show Details"}
+                  onClick={this.showDetailChess}
                 />
               </div>
               <div>
@@ -96,6 +92,11 @@ export default class Redux extends React.Component<IReduxProps, {}> {
                   label="Go Fish"
                   description={"Count (" + appState.fish + ")"}
                   percentComplete={percentCompleteFish}
+                />
+                <DefaultButton
+                  disabled={false}
+                  text={(appState.fishOpen) ? "Hide Details": "Show Details"}
+                  onClick={this.showDetailFish}
                 />
               </div>
             </div>
@@ -124,5 +125,15 @@ export default class Redux extends React.Component<IReduxProps, {}> {
   @autobind
   private showDetailCheckers(): void {
     this.props.store.dispatch(openDetails(gameTypes.checkers));
+  }
+
+  @autobind
+  private showDetailChess(): void {
+    this.props.store.dispatch(openDetails(gameTypes.chess));
+  }
+
+  @autobind
+  private showDetailFish(): void {
+    this.props.store.dispatch(openDetails(gameTypes.fish));
   }
 }
