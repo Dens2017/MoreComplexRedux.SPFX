@@ -22,7 +22,7 @@ const voteAction: Reducer<IApplicationState> = (state: IApplicationState = initi
         let newCheckers: IVoteDetails[] = newState.checkersDetails;
         newCheckers.push({
           order: newState.checkersDetails.length,
-          voter: "Densedy Isaguirre",
+          voter: "Your Name",
           votetime: moment().format("MMMM D,YYYY h:mm:ss a"),
         });
         newState.checkersDetails = newCheckers;
@@ -32,7 +32,7 @@ const voteAction: Reducer<IApplicationState> = (state: IApplicationState = initi
         let newChess: IVoteDetails[] = newState.chessDetails;
         newChess.push({
           order: newState.chessDetails.length,
-          voter: "Densedy Isaguirre",
+          voter: "Your Name",
           votetime: moment().format("MMMM D,YYYY h:mm:ss a"),
         });
         newState.chessDetails = newChess;
@@ -42,7 +42,7 @@ const voteAction: Reducer<IApplicationState> = (state: IApplicationState = initi
         let newFish: IVoteDetails[] = newState.fishDetails;
         newFish.push({
           order: newState.fishDetails.length,
-          voter: "Densedy Isaguirre",
+          voter: "Your Name",
           votetime: moment().format("MMMM D,YYYY h:mm:ss a"),
         });
         newState.fishDetails = newFish;
