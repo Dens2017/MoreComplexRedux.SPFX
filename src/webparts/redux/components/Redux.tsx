@@ -19,19 +19,12 @@ import {
 import { gameTypes, actionTypes } from '../actions/IAction';
 import { IApplicationState } from '../reducers/IApplicationState';
 import ReduxDetail from './ReduxDetail';
-import ReduxDetail1 from './ReduxDetail1';
-
 export default class Redux extends React.Component<IReduxProps, {}> {
   constructor(props: IReduxProps) {
     super(props);
   }
 
-  public componentDidMount() {
-
-  }
-
   public render(): React.ReactElement<IReduxProps> {
-    // this.props.store.subscribe(this.render)
     const appState: IApplicationState = this.props.store.getState();
     const percentCompleteCheckers: number = appState.checkers / 100;
     const percentCompleteChess: number = appState.chess / 100;

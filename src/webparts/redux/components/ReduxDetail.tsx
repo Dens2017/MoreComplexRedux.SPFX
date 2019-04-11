@@ -20,8 +20,6 @@ import {
   closeDetails
 } from '../actions';
 
-import ReduxDetail1 from './ReduxDetail1';
-
 const columns: IColumn[] = [
   {
     key: 'column1',
@@ -77,11 +75,9 @@ export default class ReduxDetail extends React.Component<IReduxDetailProps, {}> 
 
 private getData() {
    return '#'+Math.floor(Math.random()*16777215).toString(16);
-  
 }
 
   public render(): React.ReactElement<IReduxDetailProps> {
-    // this.props.store.subscribe(this.render);
     const appState: IApplicationState = this.props.store.getState();
     const bg = {
       backgroundColor: this.getData()

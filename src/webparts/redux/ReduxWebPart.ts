@@ -14,7 +14,6 @@ import {
 
 import * as strings from 'ReduxWebPartStrings';
 import Redux from './components/Redux';
-import Main from './components/Main';
 import ReduxDetail from './components/ReduxDetail';
 import { IReduxProps, IReduxDetailProps } from './components/IReduxProps';
 
