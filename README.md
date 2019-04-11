@@ -1,4 +1,4 @@
-## redux-03-spfx
+## MoreComplexredux.SPFX
 
 This is where you include your WebPart documentation.
 
